@@ -10,13 +10,5 @@ collector.add_syms_list()
 a = SymsUpdater()
 
 
-a.update_financial_statement() 
-#clear_db()
-
-a.update_enterprise_value()
-a.update_financial_ratio()
-a.update_key_metrics()
-a.update_financial_growth()
-a.update_rating()
-a.update_discounted_cash_flow()
+a.update_all()
 print(a.updates_done)

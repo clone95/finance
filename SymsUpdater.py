@@ -28,6 +28,17 @@ class SymsUpdater():
                              }
 
 
+    def update_all(self):
+
+        self.update_financial_statement()
+        self.update_financial_ratio()
+        self.update_enterprise_value()
+        self.update_key_metrics()
+        self.update_financial_growth()
+        self.update_rating()
+        self.update_discounted_cash_flow()
+
+
     def update_financial_statement(self):
         
         update_type = 'financial_statement'
