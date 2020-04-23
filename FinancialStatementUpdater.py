@@ -1,6 +1,8 @@
 from utils import connect
 import csv
 import datetime
+import requests
+import json
 
 class FinancialStatementUpdater():
     def __init__(self, index='sp500'):
@@ -9,6 +11,7 @@ class FinancialStatementUpdater():
         self.updates = []
         self.index_companies = []
     
+
     def update_index(self):
 
         # get name and ticker for each company in the index
@@ -21,6 +24,7 @@ class FinancialStatementUpdater():
         self.notify_updates()
     
         return 
+
 
     def get_index_companies(self):
 
@@ -60,8 +64,8 @@ class FinancialStatementUpdater():
         for company in companies:
             name = company['Name']
             last_update = company['last_update']
-            delta = (today - last_update).days
-            # if the last update is too old OR forced update ---> update the company data
+            delta = eval('(today - last_update).days')
+            # if the last update is too old (80 days) OR forced update ---> update the company data
             if delta > 85 or name in new_companies_names:
                 self.update_company(company, collection)
 
@@ -72,6 +76,7 @@ class FinancialStatementUpdater():
 
         update = False
         self.updates.append(update)
+
 
     def notify_updates(self):
         if self.new_companies:

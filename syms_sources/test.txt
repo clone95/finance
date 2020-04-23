@@ -1,0 +1,5 @@
+MMM
+ABT
+MSFT
+AAPL
+TSLA
