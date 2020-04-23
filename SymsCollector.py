@@ -7,7 +7,7 @@ import json
 
 class SymsCollector():
 
-    def __init__(self, syms_source, db='advisor', collection='companies'):
+    def __init__(self, syms_source='test', db='advisor', collection='companies'):
         self.db = db
         self.collection = collection
         self.syms_sources_folder = './syms_sources'
@@ -15,6 +15,12 @@ class SymsCollector():
         self.new_syms = []
         self.syms_to_remove = ['', ' ', '\n', '\t']
         
+
+    def add_syms_list(self):
+
+        self.get_new_syms()
+        self.add_new_syms()
+
 
     def get_new_syms(self, verbose=False):
 
