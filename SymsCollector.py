@@ -38,12 +38,17 @@ class SymsCollector():
 
         companies = connect(self.db, self.collection)
         # avoid duplicates (companies already in the database are not added again)
-        already_inserted = [company['symbol'] for company in list(companies.find({}))]
+        already_inserted = [company['_id'] for company in list(companies.find({}))]
         self.new_syms = [symbol for symbol in self.new_syms if symbol not in already_inserted]
 
         for sym in self.new_syms:
             profile = self.get_company_profile(sym)
-            obj_id = companies.insert_one(profile)
+            obj_id = companies.insert  (     
+                                            {
+                                            '_id': profile['symbol'],
+                                            'profile': profile['profile']
+                                            }
+                                        )
 
 
     def get_company_profile(self, sym):

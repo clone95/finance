@@ -1,2 +1,3 @@
 TSLA
-MSFT
+AAPL
+NFLX
