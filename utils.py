@@ -20,7 +20,4 @@ def get_quarter(date):
 
 def get_newest_date(dates: list):
 
-    dates = [datetime.strptime(date, '%Y-%m-%d') for date in dates]
-    newest = max(dates)
-    
-    return newest
+    return max[datetime.strptime(date, '%Y-%m-%d') for date in dates]  
