@@ -1,4 +1,5 @@
 from datetime import datetime
+import os 
 
 def get_quarter(date):
     
@@ -19,5 +20,10 @@ def get_quarter(date):
 
 
 def get_newest_date(dates: list):
+    return max([datetime.strptime(date, '%Y-%m-%d') for date in dates])  
 
-    return max[datetime.strptime(date, '%Y-%m-%d') for date in dates]  
+
+def ensure_dir_exists(directory):
+    if not os.path.exists(directory):
+        print(f'Making folder: {directory}')
+        os.makedirs(directory)

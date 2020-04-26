@@ -2,23 +2,27 @@ from utils import *
 from SymsCollector import SymsCollector
 from SymsUpdater import SymsUpdater
 from DataExtractor import DataExtractor
-from Evaluator import BaseEvaluator
+from Ranker import BaseRanker
 from MongOps import clear_db, connect
+from datetime import datetime
 
-clear_db(collection='key_metrics')
-
-
-# collect
-#collector = SymsCollector(collection='companies')
+#clear_db(collection='key_metrics')
+#clear_db(collection='companies')
+#start = datetime.now()
+#
+## collect
+#collector = SymsCollector(syms_source = 'more_test', collection='companies')
 #collector.add_syms_list()
-# update
+## update
 #updater = SymsUpdater('companies')
 #updater.update_all()
-# extract
-extractor = DataExtractor(destination_collection='key_metrics')
-extractor.extract_key_metrics()
+## extract
+#extractor = DataExtractor(destination_collection='key_metrics')
+#extractor.extract_key_metrics()
 
-base_evaluator = BaseEvaluator('key_metrics', 'scores')
-base_evaluator.evaluate()
+base_ranker = BaseRanker('key_metrics', 'rankings', './rankings')
+base_ranker.rank()
+base_ranker.save()
 
-#print(base_evaluator.newest_company_reports)
+#finish = datetime.now()
+#print(f'Time elapsed:, {finish-start}')

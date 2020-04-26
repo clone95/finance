@@ -7,7 +7,7 @@ import json
 
 class SymsCollector():
 
-    def __init__(self, syms_source='test', db='advisor', collection='companies'):
+    def __init__(self, syms_source, db='advisor', collection='companies'):
         self.db = db
         self.collection = collection
         self.syms_sources_folder = './syms_sources'
